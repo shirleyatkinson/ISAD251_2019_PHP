@@ -20,6 +20,7 @@ date_default_timezone_set('Europe/London');
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
         <a class="navbar-brand" href="index.php"><img src="../assets/img/secam_logo.jpg" class="d-inline-block align-top"
                                                       width="50" height="50">
             Student Help In Tutorials</a>
@@ -28,7 +29,7 @@ date_default_timezone_set('Europe/London');
                 <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="request.php">Request</a>
+                <a class="nav-link" href="Request.php">Request</a>
             </li>
         </ul>
         <div class="nav navbar-nav navbar-right">

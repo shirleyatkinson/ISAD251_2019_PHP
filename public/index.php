@@ -1,7 +1,6 @@
 <?php
 
 include_once 'header.php';
-
 ?>
 
 <body>
@@ -31,7 +30,7 @@ include_once 'header.php';
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-1"><a href="request.php" class="btn btn-info">Request</a></div>
+        <div class="col-sm-1"><a href="Request.php" class="btn btn-info">Request</a></div>
         <div class="col-sm-1"><a href="viewRequest.php" class="btn btn-warning">View</a></div>
         <div class="col-sm-10"></div>
     </div>
