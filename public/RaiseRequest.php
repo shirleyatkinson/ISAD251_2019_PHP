@@ -3,20 +3,14 @@ include_once 'header.php';
 include_once '../src/model/DbContext.php';
 include_once '../src/model/Module.php';
 include_once '../src/model/request.php';
+include_once '../src/controller/RequestController.php';
 
 if(!isset($db)) {
     $db = new DbContext();
 }
 if(isset($_POST['submit_Request'])) {
     $request = new request($_POST['Name'], $_POST['Room'], $_POST['Row'], $_POST['Seat'], $_POST['Problem'], $_POST['ModuleID']);
-
     $success = $db->Enter_Request($request);
-
-    echo $success." worked";
-
-    if ($success > 0) {
-       echo "div output to be done";
-    };
 }
 ?>
 
@@ -83,7 +77,6 @@ if(isset($_POST['submit_Request'])) {
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
-                                    <option value="6">6</option>
                                 </select>
                             </div>
                             <label for="Seat" class="col-sm-1 col-form-label">Seat</label>
@@ -118,8 +111,17 @@ if(isset($_POST['submit_Request'])) {
             </div>
         </div>
     </div>
+    <?php
+    $resultString = "<div class=\"row\"><div class=\"col-sm-12\"><div class=\"card border-success mb-3\">
+                <div class=\"card-header bg-success text-white\">Your Request has been raised successfully</div></div></div></div>";
+    if ($success > 0) {
+        echo $resultString;
+        alert($request);
+    };
+
+    ?>
 </div>
 
 <?php
-include_once 'footer.php';
+ include_once 'footer.php';
 ?>
