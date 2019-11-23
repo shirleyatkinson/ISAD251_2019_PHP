@@ -2,6 +2,22 @@
 include_once 'header.php';
 include_once '../src/model/DbContext.php';
 include_once '../src/model/Module.php';
+include_once '../src/model/request.php';
+
+if(!isset($db)) {
+    $db = new DbContext();
+}
+if(isset($_POST['submit_Request'])) {
+    $request = new request($_POST['Name'], $_POST['Room'], $_POST['Row'], $_POST['Seat'], $_POST['Problem'], $_POST['ModuleID']);
+
+    $success = $db->Enter_Request($request);
+
+    echo $success." worked";
+
+    if ($success > 0) {
+       echo "div output to be done";
+    };
+}
 ?>
 
 <body>
@@ -12,15 +28,13 @@ include_once '../src/model/Module.php';
             <div class="card border-primary mb-3">
                 <div class="card-header bg-primary text-white">Request</div>
                 <div class="card-body">
-                    <form action="../src/controller/Raise_Request.php" method="post">
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <div class="form-group row">
                             <div class="col-sm-8">
                                 <select class="custom-select mr-sm-2 form-control" name="ModuleID">
                                     <option value="">--Select Module Code--</option>
                                     <?php
                                         $optionString = "";
-
-                                        $db = new DbContext();
                                         $modules = $db->Modules();
 
                                         if($modules)

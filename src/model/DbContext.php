@@ -1,6 +1,7 @@
 <?php
 
 include_once 'Module.php';
+include_once 'request.php';
 
 class DbContext
 {
@@ -11,6 +12,7 @@ class DbContext
 
     private $dataSourceName;
     private $connection;
+
 
     public function __construct(PDO $connection = null)
     {
@@ -51,6 +53,20 @@ class DbContext
         return $modules;
     }
 
+    public function Enter_Request($request)
+    {
+        $sql = "CALL EnterRequest(:Name, :Room, :Row, :Seat, :Problem, :ModuleID)";
+        $statement = $this->connection->prepare($sql);
+        $statement->bindParam(':Name', $request->Name(), PDO::PARAM_STR);
+        $statement->bindParam(':Room', $request->Room(), PDO::PARAM_STR);
+        $statement->bindParam(':Row', $request->Row(), PDO::PARAM_INT);
+        $statement->bindParam(':Seat', $request->Seat(), PDO::PARAM_INT);
+        $statement->bindParam(':Problem', $request->Problem(), PDO::PARAM_STR);
+        $statement->bindParam(':ModuleID', $request->ModuleId(), PDO::PARAM_INT);
+
+        $return = $statement->execute();
+        return $return;
+    }
 
 
 }
