@@ -7,7 +7,7 @@ class DbContext
 {
     private $db_server = 'Proj-mysql.uopnet.plymouth.ac.uk';
     private $dbUser = 'ISAD251_SAtkinson';
-    private $dbPassword = 'ISAD251_123';
+    private $dbPassword = 'ISAD251_';
     private $dbDatabase = 'ISAD251_SAtkinson';
 
     private $dataSourceName;
